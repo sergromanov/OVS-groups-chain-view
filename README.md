@@ -10,4 +10,4 @@ optional arguments:
 -h, --help  show this help message and exit
 --version   show program's version number and exit
 -v          show program's version number and exit
--f F        OVS-like switch dump-group file. STDIN used if omitted.
+-f F        read "ovs-ofctl dump-groups <bridge>" command output from file F. STDIN used if omitted.

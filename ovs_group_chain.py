@@ -26,7 +26,7 @@ def print_bucket(cur_group_id, cur_bucket, prefix = ''):
 if __name__ == '__main__':
 
     arg_parser = argparse.ArgumentParser(prog='ovs_group_chain.py')
-    arg_parser.add_argument('--version', action='version', version='1.0')
+    arg_parser.add_argument('--version', action='version', version='1.1')
     arg_parser.add_argument('-v', action='version', version='1.0')
     arg_parser.add_argument('-f', help='OVS-like switch dump-group file. STDIN used if omitted.', required=False)
     arg_parser.add_argument('groupID', help='Initial group ID')
@@ -46,10 +46,10 @@ if __name__ == '__main__':
             f.close()
 
     for line in lines:
-        buckets = re.split(r"bucket=", line.strip())
+        buckets = re.split(r",bucket=", line.strip())
         idx = -1
         for bucket in buckets:
-            prog = re.compile(r"group_id=(\d+),type=(\w+),")
+            prog = re.compile(r"group_id=(\d+),type=(\w+)")
             m = prog.search(bucket)
             if m is not None:
                 group_id = m.group(1)
